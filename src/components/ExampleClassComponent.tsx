@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import { Button } from 'react-bootstrap'
 
 // INTERFACCIA DELLE PROPS
 // normalmente, in un componente a classe, l'interfaccia di default delle
@@ -13,7 +14,18 @@ interface ExampleClassComponentProps {
   otherprop: number
 }
 
-class ExampleClassComponent extends Component<ExampleClassComponentProps> {
+interface ExampleClassComponentState {
+  counter: number
+}
+
+class ExampleClassComponent extends Component<
+  ExampleClassComponentProps,
+  ExampleClassComponentState
+> {
+  state = {
+    counter: 0,
+  }
+
   componentDidMount() {
     console.log('Componente montato!')
   }
@@ -25,6 +37,31 @@ class ExampleClassComponent extends Component<ExampleClassComponentProps> {
         <p>
           {this.props.subtext} - {this.props.otherprop + 50}
         </p>
+        <div>
+          <Button
+            variant="success"
+            onClick={(e) =>
+              this.setState({
+                counter: this.state.counter + 2,
+                // stefano: true // <-- stefano non esiste nell'interfaccia, errore!
+              })
+            }
+          >
+            +
+          </Button>
+          <p>{this.state.counter.toFixed(2)}</p>
+          <Button
+            variant="success"
+            onClick={(e) =>
+              this.setState({
+                counter: this.state.counter - 1,
+                // stefano: true // <-- stefano non esiste nell'interfaccia, errore!
+              })
+            }
+          >
+            -
+          </Button>
+        </div>
       </div>
     )
   }
