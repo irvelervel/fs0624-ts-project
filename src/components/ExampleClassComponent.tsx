@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import { Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 // INTERFACCIA DELLE PROPS
 // normalmente, in un componente a classe, l'interfaccia di default delle
@@ -62,6 +63,9 @@ class ExampleClassComponent extends Component<
             -
           </Button>
         </div>
+        <Link to="/functional">
+          <h5>VAI AL COMPONENTE A FUNZIONE</h5>
+        </Link>
       </div>
     )
   }

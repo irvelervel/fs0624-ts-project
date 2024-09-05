@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Button } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 
 interface ExampleFunctionalComponentProps {
   myprop: string
@@ -29,6 +30,8 @@ const ExampleFunctionalComponent = ({
     console.log("all'avvio")
   }, [])
 
+  const navigate = useNavigate()
+
   return (
     <div>
       <h2>Componente a funzione! La prop è: {myprop}</h2>
@@ -49,6 +52,9 @@ const ExampleFunctionalComponent = ({
         RIEMPI OGGETTO DATA
       </Button>
       {data && <p>{data.title}</p>}
+      <Button variant="danger" onClick={() => navigate('/bootstrap')}>
+        VAI AL COMPONENTE BOOTSTRAP
+      </Button>
     </div>
   )
 }
